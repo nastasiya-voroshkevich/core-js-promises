@@ -17,8 +17,16 @@
  * 0    => promise that will be fulfilled
  * 1    => promise that will be fulfilled
  */
-function getPromise(/* number */) {
-  throw new Error('Not implemented');
+function getPromise(number) {
+  return new Promise((resolve, reject) => {
+    if (typeof number !== 'number' || Number.isNaN(number)) {
+      reject(new Error('Input must be a valid number'));
+    } else if (number >= 0) {
+      resolve(number);
+    } else {
+      reject(new Error('Number is negative'));
+    }
+  });
 }
 
 /**
